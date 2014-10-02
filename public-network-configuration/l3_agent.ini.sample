@@ -1,0 +1,5 @@
+[DEFAULT]
+debug = True
+interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
+use_namespaces = True
+gateway_external_network_id = %%EXT_NET_ID%%
