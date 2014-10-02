@@ -1,0 +1,62 @@
+heat_template_version: 2013-05-23
+
+description: Simple template to deploy a single compute instance
+
+parameters:
+  key_name:
+    type: string
+    description: Name of a KeyPair
+  image_id:
+    type: string
+    label: Image ID
+    description: Image to be used for compute instance
+  instance_type:
+    type: string
+    label: Instance Type
+    description: Type of instance (flavor) to be used
+    default: m1.small
+  availability_zone:
+    type: string
+    description: The Availability Zone to launch the instance.
+    default: nova
+  volume_size:
+    type: number
+    description: Size of the volume to be created.
+    default: 1
+    constraints:
+      - range: { min: 1, max: 1024 }
+        description: must be between 1 and 1024 Gb.
+  net_id:
+    type: string
+    description: ID of the network where servers will get deployed
+
+resources:
+  my_instance:
+    type: OS::Nova::Server
+    properties:
+      name: instance_with_volume
+      image: { get_param: image_id }
+      availability_zone: { get_param: availability_zone }
+      flavor: { get_param: instance_type }
+      networks:
+        - port: { get_resource: server1_port }
+  cinder_volume:
+    type: OS::Cinder::Volume
+    properties:
+      size: { get_param: volume_size }
+      availability_zone: { get_param: availability_zone }
+  volume_attachment:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: cinder_volume }
+      instance_uuid: { get_resource: my_instance }
+      mountpoint: /dev/vdc
+  server1_port:
+    type: OS::Neutron::Port
+    properties:
+      network_id: { get_param: net_id }
+
+outputs:
+  instance_ip:
+    description: Public IP address of the newly created Nova instance.
+    value: { get_attr: [my_instance, first_address] }
