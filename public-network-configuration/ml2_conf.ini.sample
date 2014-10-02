@@ -1,0 +1,25 @@
+[ml2]
+type_drivers = local,gre,flat
+mechanism_drivers = openvswitch
+
+[ml2_type_flat]
+flat_networks = physnet1
+
+[ml2_type_vlan]
+
+[ml2_type_gre]
+tunnel_id_ranges = 1:1000
+
+[ml2_type_vxlan]
+
+[securitygroup]
+firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+enable_security_group = True
+
+[ovs]
+enable_tunneling = True
+integration_bridge = br-int
+tunnel_bridge = br-tun
+local_ip = $NODE_PRIVATE_IP
+network_vlan_ranges = physnet1
+bridge_mappings = physnet1:br-ex2
