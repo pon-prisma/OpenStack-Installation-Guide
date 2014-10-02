@@ -1,0 +1,57 @@
+### INTERFACES
+
+
+# Loopback interface
+auto lo
+iface lo inet loopback
+
+
+# Public NIC - attached to bridge br-ex
+auto eth0
+iface eth0 inet manual
+up ip address add 0/0 dev $IFACE
+up ip link set $IFACE up
+down ip link set $IFACE down
+
+
+# Private NIC
+auto eth1
+iface eth1 inet static
+	address 192.168.100.12
+	netmask	255.255.255.0
+
+
+# 2nd public NIC - attached to bridge br-ex2
+auto eth2
+iface eth2 inet manual
+up ip address add 0/0 dev $IFACE
+up ip link set $IFACE up
+down ip link set $IFACE down
+
+
+
+### BRIDGES
+
+
+# Bridge for ext-net - attached to eth0
+auto br-ex
+iface br-ex inet static
+        address $NETWORK_NODE_PUBLIC_IP
+        netmask $NETWORK_NODE_PUBLIC_NETMASK
+        gateway $NETWORK_NODE_PUBLIC_GATEWAY
+        dns-nameservers $NETWORK_NODE_PUBLIC_DNS
+        dns-search $NETWORK_NODE_PUBLIC_DOMAIN
+        broadcast $NETWORK_NODE_PUBLIC_ADDRESS
+
+
+# Bridge for public-net - attached to eth2
+auto br-ex2
+
+## Uncomment the next section if you need to assign an IP to the second public NIC
+#iface br-ex2 inet static
+#address $NETWORK_NODE_2ND_PUBLIC_IP
+#netmask $NETWORK_NODE_2ND_PUBLIC_NETMASK
+#gateway $NETWORK_NODE_2ND_PUBLIC_GATEWAY
+#dns-nameservers $NETWORK_NODE_2ND_PUBLIC_DNS
+#dns-search $NETWORK_NODE_2ND_PUBLIC_DOMAIN
+#broadcast $NETWORK_NODE_2ND_PUBLIC_BROADCAST
