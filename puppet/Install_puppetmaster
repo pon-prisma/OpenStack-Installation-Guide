@@ -18,9 +18,14 @@ commands must issued with root privilege. If you don't have it use sudo
 3. Download all the configuration files in the config dir on this repo into /etc/puppet dir
    on your puppet master host. You don't need to modify them
 
-4. Start the puppet master
+4. Create some directories for future use
+ - mkdir /etc/puppet/manifest/nodes
+ - mkdir /etc/puppet/hieradata
+ - mkdir /etc/puppet/hieradata/node
+
+5. Start the puppet master
  - service puppetmaster start
  - service puppetmaster status
 
-5. Check puppetmaster network port status
+6. Check puppetmaster network port status
  - telent localhsot 8140
