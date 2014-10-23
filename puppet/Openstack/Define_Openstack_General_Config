@@ -1,0 +1,10 @@
+Basic step to define the general parameter for your Openstack Deployment
+
+1. Log on into your puppet master host
+
+2. Download the file puppet/Openstack/common.yaml file on this repo into the /etc/puppet/hieradata/ directory on the puppet master host.
+
+3. Edit the file and customize it in order to fit your environment.
+ - change the passowrd. By default the same passowrd will be used for all the services
+ - define your public network for outgoing traffic
+ - define a private network which will be created during the Openstack deployment for testing

@@ -1,0 +1,6 @@
+Basic istallation procedure to install the latest puppet modules fot the latest openstack version available
+
+1. Log on into the puppet master host
+
+2. issue the following command
+ - puppet module install puppetlabs-openstack

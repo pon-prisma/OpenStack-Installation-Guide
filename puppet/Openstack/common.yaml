@@ -1,0 +1,94 @@
+---
+password: 'put_hear_your_password'
+openstack::region: 'regionOne'
+
+######## Networks
+openstack::network::api: '90.147.66.0/24'
+openstack::network::external: '90.147.66.0/24'
+openstack::network::management: '90.147.66.0/24'
+openstack::network::data: '90.147.66.0/24'
+
+openstack::network::address::api: '90.147.66.92'
+openstack::network::address::management: '90.147.66.92'
+
+openstack::controller::address::api: '90.147.66.92'
+openstack::controller::address::management: '90.147.66.92'
+
+openstack::rabbitmq::user: 'condor'
+openstack::rabbitmq::password: "%{hiera('password')}"
+
+openstack::mysql::root_password: 'condor'
+openstack::mysql::service_password: "%{hiera('password')}"
+openstack::mysql::allowed_hosts: ['localhost', '127.0.0.1', '%']
+
+openstack::keystone::admin_token: 'c50ff4b17e606bb38e38'
+openstack::keystone::admin_email: 'vincenzo.spinoso@ba.infn.it'
+openstack::keystone::admin_password: "%{hiera('password')}"
+
+openstack::storage::address::api: '90.147.66.92'
+openstack::storage::address::management: '90.147.66.92'
+
+openstack::glance::password: "%{hiera('password')}"
+
+######## Cinder
+
+openstack::cinder::password: "%{hiera('password')}"
+openstack::cinder::volume_size: '500G'
+
+openstack::tenants:
+    "Condor":
+        description: "tenant for test condor"
+    "test":
+        description: "tenant for test"
+
+openstack::users:
+    "condor":
+        password: "%{hiera('password')}"
+        tenant: "Condor"
+        email: "vincenzo.spinoso@ba.infn.it"
+        admin: true
+
+openstack::network::external::ippool::start: 90.147.66.246
+openstack::network::external::ippool::end: 90.147.66.252
+openstack::network::external::gateway: 90.147.66.1
+openstack::network::external::dns: 90.147.66.84
+openstack::network::neutron::private: '10.0.1.0/24'
+openstack::network::neutron::enable_lb: 'True'
+
+######## Log levels
+openstack::verbose: 'True'
+openstack::debug: 'True'
+
+mysql::params::root_password: "%{hiera('password')}"
+mysql::params::old_root_password: "%{hiera('password')}"
+
+
+openstack::neutron::password: "%{hiera('password')}"
+openstack::nova::password: "%{hiera('password')}"
+openstack::neutron::shared_secret: "%{hiera('password')}"
+openstack::ceilometer::mongo::password: "%{hiera('password')}"
+openstack::ceilometer::meteringsecret: "%{hiera('password')}"
+openstack::ceilometer::password: "%{hiera('password')}"
+openstack::heat::password: "%{hiera('password')}"
+openstack::heat::encryption_key: "33a9b28012813478468d4207cfa87afc"
+openstack::horizon::secret_key: "33a9b28012813478468d4207cfa87afc"
+openstack::tempest::username_admin: 'condor'
+openstack::tempest::username: 'condor'
+openstack::tempest::username_alt: 'condor'
+openstack::tempest::public_network_name: 'condor'
+openstack::tempest::cinder_available: 'True'
+openstack::tempest::glance_available: 'True'
+openstack::tempest::heat_available: 'True'
+openstack::tempest::horizon_available: 'True'
+openstack::tempest::nova_available: 'True'
+openstack::tempest::neutron_available: 'True'
+openstack::tempest::swift_available: 'True'
+openstack::tempest::configure_images: 'False'
+openstack::tempest::image_name: 'condor'
+openstack::tempest::image_name_alt: 'condor_alt'
+openstack::tempest::configure_network: 'True'
+openstack::tempest::public_network_name: 'condor'
+
+nova_config:
+  DEFAULT/dhcp_domain:
+    value: ba.infn.it
