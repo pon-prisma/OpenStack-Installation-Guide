@@ -1,0 +1,26 @@
+Basic istallation procedure to install a Puppet Master
+
+commands must issued with root privilege. If you don't have it use sudo
+
+1. install the repo in order to get the latest puppet relase
+ 1.a rehl 6:
+   - rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+ 1.b rehl 7:
+   - rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+ 1.c ubuntu:
+   - wget https://apt.puppetlabs.com/puppetlabs-release-<CODE NAME>.deb
+   - dpkg -i puppetlabs-release-precise.deb
+   - apt-get update
+
+2. Install puppet master
+ - yum/apt-get install puppet-server
+
+3. Download all the configuration files in the config dir on this repo into /etc/puppet dir
+   on your puppet master host. You don't need to modify them
+
+4. Start the puppet master
+ - service puppetmaster start
+ - service puppetmaster status
+
+5. Check puppetmaster network port status
+ - telent localhsot 8140
