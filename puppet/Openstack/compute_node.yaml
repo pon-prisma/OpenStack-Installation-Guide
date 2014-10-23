@@ -1,0 +1,5 @@
+---
+classes:
+  - openstack::role::compute
+
+openstack::nova::libvirt_type: kvm
