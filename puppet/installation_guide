@@ -2,30 +2,33 @@ Basic istallation procedure to install a Puppet Master
 
 commands must issued with root privilege. If you don't have it use sudo
 
-1. install the repo in order to get the latest puppet relase
- 1.a rehl 6:
-   - rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
- 1.b rehl 7:
-   - rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
- 1.c ubuntu:
-   - wget https://apt.puppetlabs.com/puppetlabs-release-<CODE NAME>.deb
-   - dpkg -i puppetlabs-release-precise.deb
-   - apt-get update
+1. Log on into the puppet master host
 
-2. Install puppet master
- - yum/apt-get install puppet-server
+2. install the repo in order to get the latest puppet relase
+ 2.a rehl 6:
+   rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+ 2.b rehl 7:
+   rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+ 2.c ubuntu:
+   wget https://apt.puppetlabs.com/puppetlabs-release-<CODE NAME>.deb
+   dpkg -i puppetlabs-release-precise.deb
+   apt-get update
 
-3. Download all the configuration files in the config dir on this repo into /etc/puppet dir
-   on your puppet master host. You don't need to modify them
+3. Install puppet server
+   yum install puppet-server
 
-4. Create some directories for future use
- - mkdir /etc/puppet/manifest/nodes
- - mkdir /etc/puppet/hieradata
- - mkdir /etc/puppet/hieradata/node
+4. Download all the configuration files in the config dir on this repo into /etc/puppet dir
+   on your puppet master host. You don't need to modify them.
 
-5. Start the puppet master
- - service puppetmaster start
- - service puppetmaster status
 
-6. Check puppetmaster network port status
- - telent localhsot 8140
+5. Create some directories for future use
+   mkdir /etc/puppet/manifest/nodes
+   mkdir /etc/puppet/hieradata
+   mkdir /etc/puppet/hieradata/node
+
+6. Start the puppet master
+   service puppetmaster start
+   service puppetmaster status
+
+7. Check puppetmaster network port status
+   telent localhsot 8140
