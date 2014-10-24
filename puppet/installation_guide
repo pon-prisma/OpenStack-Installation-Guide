@@ -19,12 +19,15 @@ commands must issued with root privilege. If you don't have it use sudo
 
 4. Download all the configuration files in the config dir on this repo into /etc/puppet dir
    on your puppet master host. You don't need to modify them.
+   wget -O /etc/puppet/autosign.conf https://raw.githubusercontent.com/pon-prisma/OpenStack-Installation-Guide/master/puppet/config/autosign.conf
+   wget -O /etc/puppet/hiera.yaml https://github.com/pon-prisma/OpenStack-Installation-Guide/raw/master/puppet/config/hiera.yaml
+   wget -O /etc/puppet/puppet.conf https://raw.githubusercontent.com/pon-prisma/OpenStack-Installation-Guide/master/puppet/config/puppet.conf
 
 
 5. Create some directories for future use
    mkdir /etc/puppet/manifest/nodes
    mkdir /etc/puppet/hieradata
-   mkdir /etc/puppet/hieradata/node
+   mkdir /etc/puppet/hieradata/nodes
 
 6. Start the puppet master
    service puppetmaster start
