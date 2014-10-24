@@ -6,4 +6,4 @@ Basic istallation procedure to install the latest puppet modules fot the latest 
  - puppet module install puppetlabs-openstack
  
 3. copy the file site.pp in /etc/puppet/manifest/site.pp
- - wget https://github.com/pon-prisma/OpenStack-Installation-Guide/blob/master/puppet/Openstack/installPuppetOpenstackModule/site.pp
+ - wget https://raw.githubusercontent.com/pon-prisma/OpenStack-Installation-Guide/master/puppet/Openstack/installPuppetOpenstackModule/installation_guide
