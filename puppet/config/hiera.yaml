@@ -2,7 +2,7 @@
 :backends:
   - yaml
 :hierarchy:
-  - "node/%{::fqdn}"
+  - "nodes/%{::fqdn}"
   - "%{::osfamily}"
   - common
 
