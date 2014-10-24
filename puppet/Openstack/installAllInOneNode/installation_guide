@@ -10,6 +10,10 @@ Basic steps to install and configure all OpenStack service on a single node
 3. Create the file /etc/puppet/hieradata/<fqdn>.yaml
    wget -O /etc/puppet/hieradata/nodes<fqdn>.yaml https://raw.githubusercontent.com/pon-prisma/OpenStack-Installation-Guide/master/puppet/Openstack/installAllInOneNode/allinone_node.yaml
 
+4. Log on into the host designated to run all the Openstack services
 
-4. Log on into the host designated to run all the Openstack services and issu the following command
+5. Install puppet
+   yum/apt-get install puppet
+
+5. Issue the following command to installa and configure Openstack
    puppet agent --server <puppet master fqdn>  --onetime --no-daemonize --verbose
