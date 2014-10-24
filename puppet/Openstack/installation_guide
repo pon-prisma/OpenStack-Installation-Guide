@@ -1,0 +1,12 @@
+Basic steps to deploy a cloud infrastructure based on OPenstack using puppet
+
+
+MANDATORY STEPS:
+
+1. Complete the steps in the installation guide you will find in the installPuppetOpenstackModule directory
+
+2. Complete the steps in the installation guide you will find in the defineOpenstackGeneralConfig directory
+
+OPTIONAL STEPS depends on your goal
+
+1. If you wanto to deploy all Openstack Service over one single node follow the installation guide in the installAllInOneNode
