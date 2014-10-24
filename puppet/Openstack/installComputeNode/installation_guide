@@ -1,0 +1,16 @@
+Basic steps to install and configure an OpenStack Compute service on a single node
+
+1. Log on into the puppet master host
+
+2. Create the file /etc/puppet/manifest/nodes/<fqdn>.pp 
+   wget -O /etc/puppet/manifest/nodes/<fqdn>.pp https://raw.githubusercontent.com/pon-prisma/OpenStack-Installation-Guide/master/puppet/Openstack/installComputeNode/host.pp
+
+2.a Edit the file just download and put the real fqdn of the host designated to run  OpenStack Compute service
+
+3. Create the file /etc/puppet/hieradata/<fqdn>.yaml
+   wget -O /etc/puppet/hieradata/nodes<fqdn>.yaml https://raw.githubusercontent.com/pon-prisma/OpenStack-Installation-Guide/master/puppet/Openstack/installComputeNode/compute_node.yaml
+
+3.a Edit the file just download and put the real fqdn of the host designated to run  OpenStack Compute service
+
+4. Log on into the host designated to run all the Openstack services and issu the following command
+   puppet agent --server <puppet master fqdn>  --onetime --no-daemonize --verbose
