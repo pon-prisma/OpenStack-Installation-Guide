@@ -1,10 +1,6 @@
 ---
 classes:
-  - openstack::role::allinone
+  - openstack::role::compute
 
 openstack::nova::libvirt_type: kvm
 
-horizon::neutron_options:
-  enable_lb: True
-  enable_firewall: True
-  enable_vpn: True
