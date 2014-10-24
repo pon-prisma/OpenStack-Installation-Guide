@@ -1,8 +1,10 @@
-Basic step to define the general parameter for your Openstack Deployment
+Basic step to define the general parameters for your Openstack Deployment
 
 1. Log on into your puppet master host
 
-2. Download the file puppet/Openstack/defineOpenstackGeneralConfig/common.yaml file on this repo into the /etc/puppet/hieradata/ directory on the puppet master host.
+2. Copy the file common.yaml on this repo into the /etc/puppet/hieradata/ directory.
+   cd /etc/puppet/hieradata/
+   wget https://raw.githubusercontent.com/pon-prisma/OpenStack-Installation-Guide/master/puppet/Openstack/defineOpenstackGeneralConfig/common.yaml
 
 3. Edit the file and customize it in order to fit your environment.
  - change the passowrd. By default the same passowrd will be used for all the services
