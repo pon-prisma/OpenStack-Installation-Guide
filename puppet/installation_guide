@@ -34,4 +34,4 @@ commands must issued with root privilege. If you don't have it use sudo
    service puppetmaster status
 
 7. Check puppetmaster network port status
-   telent localhsot 8140
+   telnet localhsot 8140
